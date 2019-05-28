@@ -1,10 +1,7 @@
 package com.lemur.bank.model;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -14,21 +11,26 @@ import java.util.Set;
 
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
-@Builder
 @Entity
 public class Event {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
     private Instant date;
     private BigDecimal amount;
     private Currency currency;
-    private String status;
     private String description;
-    @OneToOne
-    private Account source;
-    @OneToOne
-    private Account destination;
+
+    //private Account source;
+
+    //private Account destination;\
+
+    public Event(Instant date, BigDecimal amount, Currency currency, String description) {
+        this.date = date;
+        this.amount = amount;
+        this.currency = currency;
+        this.description = description;
+    }
 }

@@ -1,28 +1,30 @@
 package com.lemur.bank.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.util.Currency;
 
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 @Entity
 public class User {
 
     @Id
-    private String id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
     private String password;
     private String name;
     private String email;
-    @ManyToOne(cascade= CascadeType.PERSIST)
-    private Event event;
-    @ManyToOne(cascade= CascadeType.PERSIST)
+
+    @OneToOne
     private Account account;
+
+    public User(String name, String password, String email, Account account) {
+        this.password = password;
+        this.name = name;
+        this.email = email;
+        this.account = account;
+    }
 }

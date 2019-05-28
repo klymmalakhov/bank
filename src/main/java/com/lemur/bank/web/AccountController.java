@@ -1,7 +1,9 @@
 package com.lemur.bank.web;
 
 import com.lemur.bank.model.Account;
-import com.lemur.bank.model.AccountRepository;
+import com.lemur.bank.repositories.AccountRepository;
+import com.lemur.bank.repositories.EventRepository;
+import com.lemur.bank.repositories.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -20,6 +22,8 @@ class AccountController {
 
     private final Logger log = LoggerFactory.getLogger(AccountController.class);
     private AccountRepository accountRepository;
+    private EventRepository eventRepository;
+    private UserRepository userRepository;
 
     public AccountController(AccountRepository accountRepository) {
         this.accountRepository = accountRepository;

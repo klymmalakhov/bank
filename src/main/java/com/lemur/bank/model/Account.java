@@ -1,9 +1,6 @@
 package com.lemur.bank.model;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -12,16 +9,20 @@ import java.util.Set;
 
 @Data
 @NoArgsConstructor
-@RequiredArgsConstructor
+
 @Entity
-@Table(name = "user_group")
+@Table(name = "accounts")
 public class Account {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
     private BigDecimal amount;
     private Currency currency;
-    @ManyToOne(cascade=CascadeType.PERSIST)
-    private User user;
+
+    public Account(BigDecimal amount, Currency currency) {
+        this.amount = amount;
+        this.currency = currency;
+    }
 }
