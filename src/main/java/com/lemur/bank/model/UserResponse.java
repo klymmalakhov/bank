@@ -19,13 +19,17 @@ public class UserResponse {
     private String password;
     private String name;
     private String email;
+    private String town;
+    private String country;
     private BigDecimal amount;
     private Currency currency;
 
-    public UserResponse(String password, String name, String email, BigDecimal amount, Currency currency) {
+    public UserResponse(String password, String name, String email, String town, String country, BigDecimal amount, Currency currency) {
         this.password = password;
         this.name = name;
         this.email = email;
+        this.town = town;
+        this.country = country;
         this.amount = amount;
         this.currency = currency;
     }

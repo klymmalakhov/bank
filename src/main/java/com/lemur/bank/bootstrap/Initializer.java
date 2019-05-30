@@ -34,7 +34,7 @@ class Initializer implements ApplicationListener<ContextRefreshedEvent> {
         Account account = new Account(new BigDecimal(12345), Currency.getInstance("USD"));
         accountRepository.save(account);
 
-        User user = new User("name", "password", "email", account);
+        User user = new User("name", "password", "email", "Kiev", "Ukraine", account);
         userRepository.save(user);
 
         accountRepository.findAll().forEach(System.out::println);

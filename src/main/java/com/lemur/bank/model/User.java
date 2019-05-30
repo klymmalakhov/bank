@@ -18,22 +18,28 @@ public class User {
     private String password;
     private String name;
     private String email;
+    private String town;
+    private String country;
 
     @OneToOne
     private Account account;
 
-    public User(String name, String password, String email, Account account) {
+    public User(String password, String name, String email, String town, String country, Account account) {
         this.password = password;
         this.name = name;
         this.email = email;
+        this.town = town;
+        this.country = country;
         this.account = account;
     }
 
     //??? Как заставить контролер брать этот конструктор для создание пользователя по АПИ
-    public User(String password, String name, String email, BigDecimal amount, Currency currency) {
+    public User(String password, String name, String email, String town, String country, BigDecimal amount, Currency currency) {
         this.password = password;
         this.name = name;
         this.email = email;
+        this.town = town;
+        this.country = country;
         this.account = new Account(amount, currency);
     }
 }

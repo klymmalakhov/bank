@@ -50,7 +50,13 @@ class UserController {
         log.info("Request to create user: {}", userResponse);
         Account account = new Account(userResponse.getAmount(), userResponse.getCurrency());
         account = accountRepository.save(account);
-        User user = new User(userResponse.getName(), userResponse.getPassword(), userResponse.getEmail(), account);
+        User user = new User(
+                userResponse.getName(),
+                userResponse.getPassword(),
+                userResponse.getEmail(),
+                userResponse.getTown(),
+                userResponse.getCountry(),
+                account);
         User result = userRepository.save(user);
         return ResponseEntity.created(new URI("/api/user/" + result.getId()))
                 .body(result);
