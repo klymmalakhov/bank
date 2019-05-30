@@ -23,14 +23,18 @@ public class Event {
     private Currency currency;
     private String description;
 
-    //private Account source;
+    @OneToOne
+    private Account source;
 
-    //private Account destination;\
+    @OneToOne
+    private Account destination;
 
-    public Event(Instant date, BigDecimal amount, Currency currency, String description) {
+    public Event(Instant date, BigDecimal amount, Currency currency, String description, Account source, Account destination) {
         this.date = date;
         this.amount = amount;
         this.currency = currency;
         this.description = description;
+        this.source = source;
+        this.destination = destination;
     }
 }
