@@ -2,7 +2,7 @@ package com.lemur.bank.controllers;
 
 import com.lemur.bank.model.Account;
 import com.lemur.bank.model.User;
-import com.lemur.bank.model.UserResponse;
+import com.lemur.bank.model.UserPost;
 import com.lemur.bank.repositories.AccountRepository;
 import com.lemur.bank.repositories.UserRepository;
 import org.slf4j.Logger;
@@ -46,17 +46,18 @@ class UserController {
     }
 
     @PostMapping("/user")
-    ResponseEntity<User> createUser(@Valid @RequestBody UserResponse userResponse) throws URISyntaxException {
-        log.info("Request to create user: {}", userResponse);
-        Account account = new Account(userResponse.getAmount(), userResponse.getCurrency());
+    ResponseEntity<User> createUser(@Valid @RequestBody UserPost userPost) throws URISyntaxException {
+        log.info("Request to create user: {}", userPost);
+        Account account = new Account(userPost.getAmount(), userPost.getCurrency());
         account = accountRepository.save(account);
         User user = new User(
-                userResponse.getName(),
-                userResponse.getPassword(),
-                userResponse.getEmail(),
-                userResponse.getTown(),
-                userResponse.getCountry(),
-                account);
+                userPost.getName(),
+                userPost.getPassword(),
+                userPost.getEmail(),
+                userPost.getTown(),
+                userPost.getCountry(),
+                account
+        );
         User result = userRepository.save(user);
         return ResponseEntity.created(new URI("/api/user/" + result.getId()))
                 .body(result);

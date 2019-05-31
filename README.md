@@ -83,3 +83,48 @@ User and Account should be created and linked
 }
 ```
 
+####Event API
+- GET /api/events
+
+Get all events
+
+- GET /api/event/{id}
+
+Get specified event by id
+
+- POST /api/event
+
+Create new event
+
+Example request body:
+```
+{
+    "amount": 5,
+    "currency": "USD",
+    "description": "Charity",
+    "source": 3,
+    "destination":4
+}
+```
+Example response body:
+
+```
+{
+    "id": 16,
+    "date": "2019-05-31T06:26:43.381Z",
+    "amount": 5,
+    "currency": "USD",
+    "description": "Charity",
+    "source": {
+        "id": 3,
+        "amount": 300,
+        "currency": "USD"
+    },
+    "destination": {
+        "id": 4,
+        "amount": 100,
+        "currency": "USD"
+    }
+}
+```
+

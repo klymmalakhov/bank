@@ -10,7 +10,7 @@ import java.util.Currency;
 @Data
 @NoArgsConstructor
 @Entity
-public class UserResponse {
+public class UserPost {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -24,7 +24,7 @@ public class UserResponse {
     private BigDecimal amount;
     private Currency currency;
 
-    public UserResponse(String password, String name, String email, String town, String country, BigDecimal amount, Currency currency) {
+    public UserPost(String password, String name, String email, String town, String country, BigDecimal amount, Currency currency) {
         this.password = password;
         this.name = name;
         this.email = email;
