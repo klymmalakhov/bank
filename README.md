@@ -38,9 +38,9 @@
 
 # Result
 
-##API
+## API
 
-####User API
+#### User API
 
 - GET /api/users
 
@@ -83,7 +83,7 @@ User and Account should be created and linked
 }
 ```
 
-####Event API
+#### Event API
 - GET /api/events
 
 Get all events
