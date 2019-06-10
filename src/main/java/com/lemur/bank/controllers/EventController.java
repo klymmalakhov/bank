@@ -39,18 +39,24 @@ class EventController {
     }
 
     @GetMapping("/events")
-    Collection<Event> event(@RequestParam Long userId,
-                            @RequestParam(required = false) String startDate,
-                            @RequestParam(required = false) String endDate) {
-        log.info("Request to get events: for user '{}' in period from '{}' till '{}'", userId, startDate, endDate);
+    Collection<Event> getEvents(@RequestParam Long userId,
+                            @RequestParam(required = false) Instant fromDate,
+                            @RequestParam(required = false) Instant tillDate) {
+        log.info("Request to get events: for user '{}' in period from '{}' till '{}'", userId, fromDate, tillDate);
         ArrayList<Account> userAccounts = (ArrayList<Account>) userRepository.findAllAccountsForUser(userId);
         Account account = userAccounts.get(0);
+        if ((tillDate != null)&(fromDate != null)) {
+            return eventRepository.findAllEventsByAccountAndTillDateFromDate(account, fromDate, tillDate);
+        }
+        if (fromDate != null) {
+            return eventRepository.findAllEventsByAccountAndFromDate(account, fromDate);
+        }
+        if (tillDate != null) {
+            return eventRepository.findAllEventsByAccountAndTillDate(account, tillDate);
+        }
 
-        return eventRepository.findAllEventsByAccount(account.getId());
+        return eventRepository.findAllEventsByAccount(account);
     }
-
-
-
 
 
     @GetMapping("/event/{id}")

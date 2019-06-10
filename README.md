@@ -40,19 +40,20 @@
 
 ## API
 
-#### User API
+### User API
+ 
+##### Get all users
 
 - GET /api/users
 
-Get all users
+##### Get one user by id
 
 - GET /api/user/{id}
 
-Get one user by id
+##### Create user 
 
 - POST /api/user
 
-Create user  
 
 ``` 
 {
@@ -83,18 +84,57 @@ User and Account should be created and linked
 }
 ```
 
-#### Event API
+### Event API
+
+##### Get all events
+
 - GET /api/events
 
-Get all events
+*_parameters:_*
+
+_userId_ - required;
+
+_fromDate_ - is not required;
+
+_tillDate_ - is not required;
+
+Example request:
+
+```
+/api/events?userId=6&fromDate=2019-02-14T21:57:25.806Z&tillDate=2019-06-09T11:57:21.806Z
+```
+
+Example response:
+
+```
+[
+    {
+        "id": 8,
+        "date": "2019-04-13T18:50:44.806Z",
+        "amount": 5,
+        "currency": "USD",
+        "description": "for startup!",
+        "source": {
+            "id": 3,
+            "amount": 300,
+            "currency": "USD"
+        },
+        "destination": {
+            "id": 4,
+            "amount": 100,
+            "currency": "USD"
+        }
+    }
+]
+```
+
+##### Get specified event by id
 
 - GET /api/event/{id}
 
-Get specified event by id
+##### Create new event
 
 - POST /api/event
-
-Create new event
 
 Example request body:
 ```

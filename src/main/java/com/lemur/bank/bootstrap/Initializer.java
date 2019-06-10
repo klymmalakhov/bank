@@ -45,9 +45,9 @@ class Initializer implements ApplicationListener<ContextRefreshedEvent> {
         userRepository.save(sourceUser);
         userRepository.save(destinationUser);
 
-        Event transfer1 = new Event(Instant.now(), new BigDecimal(5), Currency.getInstance("USD"), "for startup!", sourceAccount, destinationAccount);
-        Event transfer2 = new Event(Instant.now(), new BigDecimal(5), Currency.getInstance("USD"), "for startup!", sourceAccount, destinationAccount);
-        Event transfer3 = new Event(Instant.now(), new BigDecimal(10), Currency.getInstance("USD"), "for startup!", sourceAccount, destinationAccount);
+        Event transfer1 = new Event(Instant.now().minusSeconds(10000000), new BigDecimal(5), Currency.getInstance("USD"), "for startup!", sourceAccount, destinationAccount);
+        Event transfer2 = new Event(Instant.now().minusSeconds(5000000), new BigDecimal(5), Currency.getInstance("USD"), "for startup!", sourceAccount, destinationAccount);
+        Event transfer3 = new Event(Instant.now().minusSeconds(100000), new BigDecimal(10), Currency.getInstance("USD"), "for startup!", sourceAccount, destinationAccount);
         Event transfer4 = new Event(Instant.now(), new BigDecimal(20), Currency.getInstance("USD"), "for startup!", sourceAccount, destinationAccount);
         Event transfer5 = new Event(Instant.now(), new BigDecimal(40), Currency.getInstance("USD"), "I'm reach! I don't need it!", destinationAccount, sourceAccount);
         eventRepository.save(transfer1);
