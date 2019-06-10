@@ -21,6 +21,8 @@ public class Event {
     private Instant date;
     private BigDecimal amount;
     private Currency currency;
+
+    @Lob
     private String description;
 
     @OneToOne
