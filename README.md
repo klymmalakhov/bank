@@ -168,3 +168,11 @@ Example response body:
 }
 ```
 
+## React
+
+yarn create react-app app
+
+cd app
+
+yarn add bootstrap@4.1.3 react-cookie@3.0.4 react-router-dom@4.3.1 reactstrap@6.5.0
+
