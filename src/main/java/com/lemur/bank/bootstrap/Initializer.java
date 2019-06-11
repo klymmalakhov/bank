@@ -40,8 +40,8 @@ class Initializer implements ApplicationListener<ContextRefreshedEvent> {
         accountRepository.save(sourceAccount);
         accountRepository.save(destinationAccount);
 
-        User sourceUser = new User("source", "password", "email", "Kiev", "Ukraine", sourceAccount);
-        User destinationUser = new User("LuckyMan", "password", "email", "Kiev", "Ukraine", destinationAccount);
+        User sourceUser = new User("password", "Johnny", "email", "Kiev", "Ukraine", sourceAccount);
+        User destinationUser = new User("password", "Bill", "email", "Kiev", "Ukraine", destinationAccount);
         userRepository.save(sourceUser);
         userRepository.save(destinationUser);
 
@@ -62,7 +62,7 @@ class Initializer implements ApplicationListener<ContextRefreshedEvent> {
         Account account = new Account(new BigDecimal(12345), Currency.getInstance("USD"));
         accountRepository.save(account);
 
-        User user = new User("name", "password", "email", "Kiev", "Ukraine", account);
+        User user = new User("password", "Alex", "email", "Kiev", "Ukraine", account);
         userRepository.save(user);
 
     }
