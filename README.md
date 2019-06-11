@@ -1,38 +1,34 @@
-#  Задание
+#  Bank project
 
 ### Java Developer (Billing)
 
 
-###### Условие:
+###### Condition:
 
-Базовая валюта сервиса - USD.
-Доступные валюты кошельков - USD, EUR, CAD, CNY
+Create web services for payment system. 
 
-Необходимо разработать веб-приложение простой платежной системы. Требования:
+1) Each client has onу wallet 
 
-1) Каждый клиент в системе имеет один "кошелек", содержащим денежные средства в некой валюте. 
+2) Saved client info: name, country, city, currency, balance
 
-2) Сохраняется информация о имени клиента, стране и городе его регистрации, валюте кошелька и остатке средств на нем.
+3) There's a possibility to transfer money between clients
 
-3) Клиенты могут делать друг другу денежные переводы в любой валюте поддерживаемой системой.
+4) All information about transfers are saved
 
-4) Сохраняется информация о всех операциях на кошельке клиента.
+5) There's possibility to make deposit 
 
-5) В системе существует информация о курсах валют к USD на каждый день.
+5) HTTP API interface:
 
-6) Проект представляет из себя HTTP API, содержащее основные операции по "кошелькам" и endpoint для отчетов.
-
-7) HTTP API должен представлять следующие интерфейсы:
-
-    1) регистрация клиента с указанием его имени, страны, города регистрации, валюты создаваемого кошелька.
-    2) зачисление денежных средств на кошелек клиента
-    3) перевод денежных средств с одного кошелька на другой.
-    4) загрузка котировки валюты к USD на дату
-
-8) Отчет должен отображать историю всех операций по кошельку указанного клиента за период.
-
-    1) Параметры: Имя клиента (обязательный параметр), Начало периода (необязательный параметр), конец периода (необязательный параметр).
-    2) Должна быть предусмотрена возможность выгрузки отчета в CSV или XML формате.
+    1) Client registration
+    2) Increase client balance
+    3) Transfer between wallets
+    
+7)  Provide reports with transfer and deposit history:
+    
+    1) Parameters: client (mandatory), date from (not mandatory), date till (not mandatory)
+    2) There's possibility to get report as CSV and XML file   
+ 
+Base currency - USD.
 
 ***
 
@@ -67,7 +63,9 @@
 }
          
   ``` 
+  
 User and Account should be created and linked
+
 ```
 {
     "id": 4,
@@ -137,6 +135,7 @@ Example response:
 - POST /api/event
 
 Example request body:
+
 ```
 {
     "amount": 5,
@@ -146,6 +145,7 @@ Example request body:
     "destination":4
 }
 ```
+
 Example response body:
 
 ```
